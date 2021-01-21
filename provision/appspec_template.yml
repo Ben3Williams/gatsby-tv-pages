@@ -1,0 +1,35 @@
+version: 0.0
+
+os: linux
+
+files:
+  - source: /build/
+    destination: /data/apache2/domain_name/public_html
+  - source: codebuild.env
+    destination: /data/apache2/domain_name/public_html
+  - source: /provision/apache2/domain_name.conf
+    destination: /etc/apache2/sites-available/
+
+hooks:
+  BeforeInstall:
+    - location: provision/scripts/before.sh
+      timeout: 120
+      runas: ubuntu
+
+  AfterInstall:
+    - location: provision/scripts/after.sh
+      timeout: 240
+      runas: ubuntu
+
+  ApplicationStop:
+    - location: provision/scripts/deregister_from_elb.sh
+      timeout: 120
+      runas: ubuntu
+
+  ApplicationStart:
+    - location: provision/scripts/start.sh
+      timeout: 120
+      runas: ubuntu
+    - location: provision/scripts/register_with_elb.sh
+      timeout: 120
+      runas: ubuntu

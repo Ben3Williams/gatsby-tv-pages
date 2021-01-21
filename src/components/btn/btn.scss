@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    color: $color-bt-white;
+    text-decoration: none;
+    min-height: 4rem;
+    min-width: 8rem;
+
+    &--purchase:link,
+    &--purchase:visited {
+        background: $color-bt-purchase;
+
+        &:hover, &:active {
+            background: $color-bt-purchase-hover;
+        }
+    }
+
+    &--learn:link,
+    &--learn:visited {
+        background: $color-bt-learn;
+
+        &:hover, &:active {
+            background: $color-bt-learn-hover;
+        }
+    }
+    
+    &:empty{
+        display: none;
+    }
+}

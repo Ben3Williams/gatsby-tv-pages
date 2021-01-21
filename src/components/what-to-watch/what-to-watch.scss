@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+
+.what-to-watch {
+  grid-column: full-start / full-end;
+  border-bottom: $bt-border;
+
+  display: grid;
+  grid-template-columns: minmax(32rem, 1fr);
+  grid-auto-rows: min-content;
+  grid-column-gap: 2rem;
+
+  @media screen and (min-width: $bp-small){
+    grid-template-columns: repeat(3, minmax(15rem, 1fr));
+  }
+
+  @media screen and (min-width: $bp-largest) {
+    grid-column: center-start / center-end;
+  }
+
+  &__title {
+    justify-self: center;
+    grid-column: 1 / -1;
+    margin: 6rem 0;
+  }
+
+  &__channel-title {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 2rem;
+  }
+
+  &__show-title {
+    margin-bottom: 2rem;
+  }
+
+  &__show-copy {
+    margin-bottom: 6rem;
+  }
+}

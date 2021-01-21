@@ -1,0 +1,33 @@
+// COLOR VARIABLES
+$color-bt-purchase: #e60050;
+$color-bt-learn: #6400aa;
+$color-bt-blue: #00a0d6;
+$color-bt-white: #fff;
+
+$color-bt-darkgrey: #333;
+$color-bt-mediumgrey: #666;
+$color-bt-lightgrey: #ddd;
+
+$color-bt-warning: #e60014;
+$color-bt-success: #008a00;
+$color-bt-alert: #ffdc00;
+
+$color-bt-purchase-hover: #c30d4c;
+$color-bt-learn-hover: #540e85;
+
+$color-bt-nav-bg: #6400aa;
+
+// FONT VARIABLES
+$font-primary: 'BT_Regular', Calibri, Arial, sans-serif;
+$font-light: 'BT_Light', Calibri, Arial, sans-serif;
+$font-bold: 'BT_Bold', Calibri, Arial, sans-serif;
+
+// BREAKPOINTS
+$bp-largest: 75em;    // 1200px
+$bp-large: 60em;      // 960px
+$bp-medium: 48em;     // 768px
+$bp-small: 37.5em;    // 600px
+$bp-smallest: 20em;   // 320px
+
+// BORDER
+$bt-border: 0.1rem solid $color-bt-lightgrey;

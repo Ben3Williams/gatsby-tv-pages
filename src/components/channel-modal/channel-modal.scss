@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.modal__link {
+    color: $color-bt-learn;
+    border: none;
+    font-size: 1.6rem;
+    margin-bottom: 2.0rem;
+    cursor: pointer;
+}
+
+.modal__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: none;
+    font-size: 1.6rem;
+    color: $color-bt-learn;
+
+    &:hover,
+    &:focus {
+        color: $color-bt-learn-hover;
+    }
+}

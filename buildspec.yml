@@ -1,0 +1,50 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - aws s3 cp s3://col-keys/git-ssh-keys/codebuild_github_id_rsa.asc .
+      - aws kms decrypt --ciphertext-blob fileb://codebuild_github_id_rsa.asc --query Plaintext --output text | base64 --decode > codebuild_github_id_rsa
+      - chmod 600 codebuild_github_id_rsa && cat codebuild_github_id_rsa
+      - apt-get update && apt-get -y install keychain openssh-client
+      - ssh-keygen -t rsa -C codebuild -f ~/.ssh/codebuild -P ""
+      - npm update -g npm      
+      - eval `ssh-agent` && ssh-add codebuild_github_id_rsa && ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts   
+      - npm install --global gatsby-cli   
+      - npm install
+      - npm run build
+      - mv public/ build/
+      - printenv
+      - rm -f codebuild.env
+      - echo "CODEBUILD_SOURCE_REPO_URL:$CODEBUILD_SOURCE_REPO_URL" >> codebuild.env
+      - echo "CODEBUILD_SOURCE_VERSION:$CODEBUILD_SOURCE_VERSION" >> codebuild.env
+      - echo "CODEBUILD_BUILD_ID:$CODEBUILD_BUILD_ID" >> codebuild.env
+      - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:$CODEBUILD_RESOLVED_SOURCE_VERSION" >> codebuild.env
+      - echo "CODEBUILD_SRC_DIR:$CODEBUILD_SRC_DIR" >> codebuild.env
+      - echo "AWS_REGION:$AWS_REGION" >> codebuild.env
+      - echo "CODEBUILD_BUILD_ARN:$CODEBUILD_BUILD_ARN" >> codebuild.env
+      - echo "CODEBUILD_BUILD_IMAGE:$CODEBUILD_BUILD_IMAGE" >> codebuild.env
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      - rm -f codebuild_github_id_rsa.asc
+      - rm -f codebuild_github_id_rsa
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo 'Generating codedeploy configs'
+      - chmod +x provision/run.sh
+      - provision/run.sh
+      - cp -p -r -f provision/appspec.yml appspec.yml
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - codebuild.env
+    - appspec.yml
+    - build/**/*
+    - provision/**/*
+  discard-paths: no

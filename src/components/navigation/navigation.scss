@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+.navigation {
+    grid-column: full-start / full-end;
+    padding: 1rem 0;
+    background-color: $color-bt-nav-bg;
+
+    &__logo {
+        height: 4.6rem;
+        width: 4.6rem;
+
+        margin: 0 2%;
+
+        @media screen and (min-width: $bp-largest) {
+            display: block;
+            margin: 0 18%;
+        }
+    }
+
+}

@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.merch-strip {
+    padding: 1rem 2rem;
+    background: $color-bt-alert;
+    color: $color-bt-darkgrey;
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    @media screen and (min-width:$bp-small) {
+        grid-column: 1 / span 2;
+    }
+
+    &:empty{
+        display: none;
+    }
+}

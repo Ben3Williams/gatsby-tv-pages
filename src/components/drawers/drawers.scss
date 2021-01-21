@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+
+.drawers {
+  &__drawer {
+    border-bottom: $bt-border;
+
+    &__title {
+      color: $color-bt-learn;
+      line-height: 1;
+      position: relative;
+      padding: 1.5rem 1rem 1.5rem 3.5rem;
+      margin: 0;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      &[aria-expanded="true"] &__arrow {
+        transform: rotate(-180deg);
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+      }
+
+      &__arrow {
+        position: absolute;
+        left: 1rem;
+        top: 1.5rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 0.2rem;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform .2s ease;
+      }
+    }
+
+    &__body {
+        animation: fadein 0.35s ease-in;
+
+      &--padded {
+        padding: 1rem;
+      }
+
+      &[aria-hidden="true"] {
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+/* ----- Text Animation ------ */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

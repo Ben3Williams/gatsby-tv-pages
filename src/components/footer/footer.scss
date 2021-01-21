@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.footer {
+    grid-column: full-start / full-end;
+    padding: 1rem 0;
+    background-color: $color-bt-nav-bg;
+    color: $color-bt-white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &__logo {
+        height: 4.6rem;
+        width: 4.6rem;
+
+        margin: 0 2%;
+
+        @media screen and (min-width: $bp-largest) {
+            display: block;
+        }
+    }
+
+}

@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.legals {
+    grid-column: full-start / full-end;
+    padding: 4rem 2rem;
+
+    @media screen and (min-width: $bp-largest){
+        grid-column: center-start / center-end;
+        padding: 4rem 0;
+    }
+
+    &__heading,
+    &__paragraph {
+        padding: 2rem 0;
+    }
+
+    
+}
