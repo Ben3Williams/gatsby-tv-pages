@@ -23,7 +23,7 @@
     "react-helmet": "^5.2.0",
     "react-if": "^3.4.3",
     "react-modal": "^3.11.1",
-    "sharp": "^0.23.0"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
